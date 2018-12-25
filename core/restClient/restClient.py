@@ -8,8 +8,7 @@ class BasicConnect(object):
         self.port = port
 
     def connection(self, func, value):
-        value = "/ocsp/{}?serialNumber={}".format(func, value)
-        print(value)
+        value = func.format(value)
         connect = HTTPConnection(self.url, self.port)
         connect.request("GET", value)
         response = connect.getresponse()
