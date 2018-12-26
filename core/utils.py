@@ -78,7 +78,8 @@ class utils(object):
         connect.close()
         cert_data = base64.b64decode(rest[0]['cert'])
         responder_cert = x509.Certificate().load(cert_data)
-        private_key_data = load_pem_private_key(rest[0]['privatekey'], password=b'111', backend=default_backend())
+        private_key_data = load_pem_private_key(rest[0]['privatekey'], password=b'trustasia-cloudpki',
+                                                backend=default_backend())
         private_key_data = private_key_data.private_bytes(
             encoding=Encoding.DER,
             format=PrivateFormat.PKCS8,
