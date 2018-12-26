@@ -33,7 +33,4 @@ def start(port):
 
 
 if __name__ == '__main__':
-    port = int(sys.argv[1])
-    if port < 8000 or port > 8999:
-        raise ValueError('端口号在 8000-8999 之间')
-    start(port)
+    start(8000)

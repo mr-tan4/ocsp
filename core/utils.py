@@ -17,7 +17,7 @@ class utils(object):
             data = response.read().decode('utf-8')
             data = json.loads(data)
             certificate_data = base64.b64decode(data['certificate_data'])
-            private_key_data = base64.b64decode(data['private_key'])
+            private_key_data = data['private_key']
             data['certificate_data'] = certificate_data
             data['private_key_data'] = private_key_data
             return data
@@ -30,7 +30,13 @@ class utils(object):
             if k == 'serial_number':
                 serial_number = v
         # 获取ca私钥信息
-        ca_privateKey = keys.PrivateKeyInfo().load(data['private_key_data'])
+        private_key_data = load_pem_private_key(data['private_key_data'].encode('utf-8'), password=b'trustasia-cloudpki',
+                                                backend=default_backend())
+        private_key_data = private_key_data.private_bytes(
+            encoding=Encoding.DER,
+            format=PrivateFormat.PKCS8,
+            encryption_algorithm=NoEncryption())
+        ca_privateKey = keys.PrivateKeyInfo().load(private_key_data)
         ca_info = {
             'ca': ca,
             'ca_privateKey': ca_privateKey,
@@ -78,7 +84,7 @@ class utils(object):
         connect.close()
         cert_data = base64.b64decode(rest[0]['cert'])
         responder_cert = x509.Certificate().load(cert_data)
-        private_key_data = load_pem_private_key(rest[0]['privatekey'], password=b'trustasia-cloudpki',
+        private_key_data = load_pem_private_key(rest[0]['privatekey'].encode('utf-8'), password=b'trustasia-cloudpki',
                                                 backend=default_backend())
         private_key_data = private_key_data.private_bytes(
             encoding=Encoding.DER,

@@ -25,13 +25,13 @@ class Config(object):
     redis_password = ''
 
     # restful 相关配置
-    rest_server_url = 'http://192.168.10.133'
+    rest_server_url = '192.168.10.133'
     rest_server_port = 8889
-    getUpCAData = rest_server_url + '/ocsp/getUpCAData?serialNumber={}'
-    checkAllUpCAStatus = rest_server_url + '/ocsp/checkAllUpCAStatus?serialNumber={}'
-    getMyData = rest_server_url + '/ocsp/getMyData?serialNumber={}'
-    checkMyStatus = rest_server_url + '/ocsp/checkMyStatus?serialNumber={}'
-    checkInDataTable = rest_server_url + '/ocsp/checkInDataTable?serialNumber={}'
+    getUpCAData = 'http://' + rest_server_url + '/ocsp/getUpCAData?serialNumber={}'
+    checkAllUpCAStatus = 'http://' + rest_server_url + '/ocsp/checkAllUpCAStatus?serialNumber={}'
+    getMyData = 'http://' + rest_server_url + '/ocsp/getMyData?serialNumber={}'
+    checkMyStatus = 'http://' + rest_server_url + '/ocsp/checkMyStatus?serialNumber={}'
+    checkInDataTable = 'http://' + rest_server_url + '/ocsp/checkInDataTable?serialNumber={}'
 
     # 日志配置
     log_file = '/Users/robert/ocsp/log/log.txt'
@@ -96,4 +96,4 @@ mapping = {
 }
 
 APP_ENV = os.environ.get('APP_ENV', 'default').lower()
-config = mapping[APP_ENV]()
+config = mapping['default']()
