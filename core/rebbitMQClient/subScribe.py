@@ -9,7 +9,9 @@ class ampqClient:
 
     def __init__(self):
         credentials = pika.PlainCredentials('admin', 'admin')
-        connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.10.133', credentials=credentials))
+        connection = pika.BlockingConnection(
+            pika.ConnectionParameters(host=Config.rebbitmq_server_url, port=Config.rebbitmq_server_port,
+                                      credentials=credentials))
         self.channel = connection.channel()
         self.channel.queue_declare(queue='status', durable=True)
         self.channel.basic_consume(self.callback, queue='status', no_ack=True)

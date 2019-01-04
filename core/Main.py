@@ -1,7 +1,6 @@
 import sys
+sys.path.append('/usr/src/app/ocsp')
 from threading import Thread, Lock
-
-sys.path.append("/Users/robert/PycharmProjects/ocsp")
 from core.server.service.OCSPResponder import OCSPHandler
 from http.server import HTTPServer
 from core.rebbitMQClient.subScribe import ampqClient
@@ -32,5 +31,4 @@ def start(port):
     startRebbitmq().start()
 
 
-if __name__ == '__main__':
-    start(8000)
+start(8000)
