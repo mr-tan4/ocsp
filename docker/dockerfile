@@ -1,0 +1,8 @@
+FROM python:3.7.2
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY  ocsp1/ .
+RUN apt update
+ENV APP_ENV 'default'
+CMD ["python","ocsp/core/Main.py"]
