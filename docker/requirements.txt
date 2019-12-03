@@ -34,7 +34,7 @@ django-ca==1.9.0
 django-object-actions==1.0.0
 docopt==0.6.2
 dominate==2.3.4
-ecdsa==0.13
+ecdsa==0.13.3
 flake8==3.6.0
 ForgeryPy==0.1
 future==0.17.1
