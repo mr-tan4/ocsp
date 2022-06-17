@@ -107,7 +107,7 @@ redis==3.0.1
 requests==2.20.1
 scikit-learn==0.20.1
 scipy==1.1.0
-Scrapy==1.5.1
+Scrapy==2.6.1
 service-identity==18.1.0
 shellescape==3.4.1
 six==1.11.0
