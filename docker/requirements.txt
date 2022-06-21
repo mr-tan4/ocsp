@@ -64,7 +64,7 @@ mccabe==0.6.1
 mock==2.0.0
 more-itertools==4.3.0
 Naked==0.1.31
-numpy==1.15.3
+numpy==1.22.0
 ocspbuilder==0.10.2
 oscrypto==0.19.1
 pandas==0.23.4
